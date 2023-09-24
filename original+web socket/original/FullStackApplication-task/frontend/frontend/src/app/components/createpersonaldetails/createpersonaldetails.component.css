@@ -1,0 +1,8 @@
+.body {
+    background-image: url('https://i.pinimg.com/736x/e7/58/fe/e758fe4410dad4963e19a8dcef577fea--background-images-brochure.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100;
+}

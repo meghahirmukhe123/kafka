@@ -1,0 +1,56 @@
+<div class="image">
+
+</div>
+<mat-toolbar color="primary" class="body">
+    <div class="example-spacer">
+    <a mat-icon-button routerLink="/"><h3>Home</h3></a> 
+    </div>
+    <div class="example-spacer-nav">
+    
+    <!-- <a mat-icon-button routerLink="/login"><h3>Logout</h3></a> -->
+    <a mat-icon-button  (click)="logoutUser()" style="margin-left: 1060px;"><h3>Logout</h3></a>
+
+    <a mat-icon-button  routerLink="/communication" style="margin-left: 40px;"><h3>Get all</h3></a>
+</div>
+
+</mat-toolbar>
+
+
+<div class="img-row">
+    <div routerLink="/userdetailshome">
+    <a><br><br>
+        <img src="https://media.istockphoto.com/id/1191487541/vector/personal-info-data-icon-identification-card-icon-personal-info-data-icon-user-or-profile.jpg?s=1024x1024&w=is&k=20&c=gZsqsiLPg-rYzM2RHYYRB3VbXlK8lIM0zBiAdJIWaqQ=" style="height: 140px;">
+        <h4 style="font-family: 'Times New Roman', Times, serif; color:black ; margin-left: 10%;" ><b>Users Details</b></h4>
+         <br>
+        <br>
+    </a>
+</div>
+<div style="margin-left: 3%;">
+    <a routerLink="/personaldetailshomepage">
+        <img src="https://www.shutterstock.com/shutterstock/photos/478640791/display_1500/stock-vector-personal-badge-rounded-icon-vector-illustration-style-is-flat-iconic-symbol-cobalt-color-white-478640791.jpg" style="height: 138px;"> 
+        <h4 style="font-family:'Times New Roman', Times, serif ;  color:black"><b>Personal Details</b></h4>
+    </a>
+    </div>
+    <div  style="height: 152px; margin-top: -6%;">
+    <a routerLink="/producthomepage">
+
+        <img src="https://cdn3d.iconscout.com/3d/premium/thumb/product-5806313-4863042.png" >
+        <h4 style="font-family: 'Times New Roman', Times, serif;  color:black"><b>Product Details</b></h4>
+
+        
+    </a>
+    </div>
+        <div style="height: 152px; margin-top: -6%;">
+            <a routerLink="/userbill">
+              <img src="https://static-00.iconduck.com/assets.00/transaction-history-icon-256x256-64vaos7i.png">
+              <h4 style="font-family: 'Times New Roman', Times, serif; color: black; margin-left: 39px;">
+                <b>All Bills</b>
+                <span class="badge badge-primary" style="color: black;">{{ userBillCount }}</span>
+                <!-- Display the count here -->
+              </h4>
+            </a>
+          </div>
+          
+        
+          
+</div>

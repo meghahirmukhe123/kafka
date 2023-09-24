@@ -1,0 +1,31 @@
+spring:
+  main:
+    banner-mode: off
+  application:
+    name: USERDETAILS-SERVICE
+    
+  data:
+    mongodb:
+      database: MyApplication
+      host: localhost
+      port: 27017  # Default MongoDB port, adjust if necessary
+
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: userdetails
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+spring.kafka.topic.name: kafka
+spring.kafka.consumer.group-id: userdetails
+
+# Exclude auto-configuration of DataSource
+spring.autoconfigure.exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+

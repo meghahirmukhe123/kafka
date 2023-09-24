@@ -1,0 +1,82 @@
+ <div class="body">
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="title-style">Personal-Details List</h2>
+        </div>
+        <div class="col-md-6">
+            <a routerLink="/personaldetailshomepage" class="btn btn-secondary" style="margin-left: 519px;">Go Back</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <input type="text" [(ngModel)]="searchEmail" placeholder="Search by Email ID">
+            <button (click)="searchUser()" class="shift-button"> Search</button>
+            <button (click)="clearSearch()" class="shift-button"> Clear Search</button>
+        </div>
+    </div>
+
+    <br>
+
+    <br>
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th>Personal-id</th>
+                <th>Email-Id</th>
+                <th>Gender</th>
+                <th>Age</th>
+               
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngIf="displayedUser; else userList">
+                <tr>
+                    <td>{{displayedUser.personalId}}</td>
+                   
+                    <td style="padding-left: 20px;">{{ displayedUser.emailId }}</td>
+                    <td>{{ displayedUser.gender }}</td>
+                    <td>{{ displayedUser.age }}</td>
+                    
+                    <td>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button (click)="updatebyEmailId(displayedUser.emailId)"
+                                    class="btn btn-info">Update</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button (click)="deletebyEmailId(displayedUser.emailId)" class="btn btn-danger"
+                                   style="margin-left: -54px;" >Delete</button>
+                            </div>
+
+                         
+                        </div>
+                    </td>
+                </tr>
+            </ng-container>
+            <ng-template #userList>
+                <tr *ngFor="let personal of personalDetails">
+                    <td>{{personal.personalId}}</td>
+                    <td>{{ personal.emailId }}</td>
+                    <td>{{ personal.gender }}</td>
+                    <td>{{ personal.age }}</td>
+                   
+                    <td>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button (click)="updatebyEmailId(personal.emailId)" class="btn btn-info">Update</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button (click)="deletebyEmailId(personal.emailId)" class="btn btn-danger"
+                                    style="margin-left: -59px;">Delete</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </tbody>
+    </table>
+</div>
+

@@ -1,0 +1,45 @@
+package com.ProductDetails.controller;
+
+
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ProductDetails.kafka.productDetailsProducer;
+import com.ProductDetails.model.ProductDetails;
+import com.ProductDetails.model.userBill;
+
+@RestController
+public class userBillController {
+	
+	@Autowired
+	private productDetailsProducer producer;
+	
+	public userBillController(productDetailsProducer producer) {
+	
+		this.producer = producer;
+	}
+	
+	@PostMapping("/kafkalogin")
+	//@RequestBody => use to convert json into java object
+	public String doLogin(@RequestBody ProductDetails productDetails)
+	{
+		
+		userBill bill= new userBill();
+		
+		bill.setBillId(UUID.randomUUID().toString());
+		bill.setDate(productDetails.getDate());
+		bill.setEmailId(productDetails.getEmailId());
+		bill.setPrice(productDetails.getPrice());
+		producer.sendMessage(bill);
+		return "bill generated successfully";
+		
+	}
+	
+
+
+
+}

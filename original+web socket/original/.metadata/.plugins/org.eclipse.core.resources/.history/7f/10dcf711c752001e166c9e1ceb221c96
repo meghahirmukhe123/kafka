@@ -1,0 +1,8 @@
+package com.ProductDetails.config;
+
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class KafkaTopicConfig {
+
+}

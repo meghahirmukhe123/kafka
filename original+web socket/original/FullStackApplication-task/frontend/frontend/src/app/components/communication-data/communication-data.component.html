@@ -1,0 +1,22 @@
+<div class="content body">
+  
+    <button mat-icon-button class="top-right-button" routerLink="/dashboard">
+      <mat-label><small>  Back </small></mat-label>
+    </button>
+
+    
+    <h2 class="alignment">Get Communication Data</h2>
+      
+    <div class="alignment">
+      <label for="emailId">Enter Email ID : </label>
+      <input type="text" [(ngModel)]="emailId" name="emailId" id="emailId" style="margin-left: 2px;"/>
+      <button mat-raised-button color="primary" (click)="getUserData()" style="margin-left: 5px;">Get User Data</button>
+    </div>
+    
+    <pre *ngIf="userData" style="text-align: center;">{{ userData | json }}</pre>
+    
+    <div *ngIf="userNotFound">
+      <p style="color: red; text-align: center;">User with the provided email ID was not found.</p>
+    </div>
+  </div>
+  

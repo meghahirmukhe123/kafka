@@ -1,0 +1,5 @@
+package com.Bill.config;
+
+public class WebSocketConfig implements WebSocketMessageBrokerConfigurer  {
+
+}

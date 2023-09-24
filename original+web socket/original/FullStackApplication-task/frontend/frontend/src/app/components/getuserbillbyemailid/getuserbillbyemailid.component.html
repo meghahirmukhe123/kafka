@@ -1,0 +1,24 @@
+<div class="body">
+   <div class="container mt-5 ">
+    <h2>User Bill Details</h2>
+  
+    <div *ngFor="let bill of bills">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Product ID: {{ bill.productId }}</h5>
+          <p class="card-text">Email ID: {{ bill.emailId }}</p>
+          <p class="card-text">Product Name: {{ bill.productName }}</p>
+          <p class="card-text">Price: {{ bill.price | currency }}</p>
+          <p class="card-text">Date: {{ bill.date }}</p>
+          <p class="card-text">GST: {{ bill.gst }}%</p>
+          <p class="card-text">Price with GST: {{ bill.priceWithGST | currency }}</p>
+          <p class="card-text">Total Bill: {{ bill.totalBillRs }}</p>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="bills.length === 0">
+      <p>No bills found for the provided email ID.</p>
+    </div>
+  </div>
+</div>

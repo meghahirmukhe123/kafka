@@ -1,0 +1,45 @@
+package com.IdentityService.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class eventController {
+	
+	
+	@Autowired
+	private eventProducer producer;
+	
+	public eventController(eventProducer producer) {
+		super();
+		this.producer = producer;
+	}
+	
+	@PostMapping("/kafkalogin")
+	//@RequestBody => use to convert json into java object
+	public String doLogin(@RequestBody AuthRequest auth)
+	{
+		
+		event evt= new event();
+		
+		evt.setMessage("Login Producer");
+		evt.setRequest(auth);
+		producer.sendMessage(evt);
+		return "Login done successfully";
+		
+	}
+	
+	@PostMapping("/kafkaRegister")
+	//@RequestBody => use to convert json into java object
+	public String doRegister(@RequestBody UserCredentials usrCredentials)
+	{
+		usrCredentials.setId(UUID.randomUUID().toString());
+		event evt= new event();
+		
+		evt.setMessage("Login Producer");
+		evt.setCredentials(usrCredentials);
+		producer.sendMessage(evt);
+		return "Registration done successfully";
+		
+	}
+
+}

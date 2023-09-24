@@ -1,0 +1,40 @@
+package com.IdentityService.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.IdentityService.dto.AuthRequest;
+import com.IdentityService.dto.event;
+import com.IdentityService.entity.UserCredentials;
+import com.IdentityService.kafka.eventProducer;
+
+@RestController
+public class eventController {
+	
+	@Autowired
+	private eventProducer producer;
+	
+	public eventController(eventProducer producer) {
+		super();
+		this.producer = producer;
+	}
+	
+	@PostMapping("/auth")
+	//@RequestBody => use to convert json into java object
+	public String placeOrder(@RequestBody AuthRequest auth , @RequestBody UserCredentials credentials)
+	{
+		
+		event evt= new event();
+		
+		evt.setMessage("Login Producer");
+		evt.setRequest(auth);
+		evt.setCredentials(null)
+		
+		producer.sendMessage(evt);
+		return "Login done successfully";
+		
+	}
+
+}

@@ -1,0 +1,31 @@
+package com.IdentityService.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class eventController {
+	
+	@Autowired
+	private authProducer producer;
+	
+	public eventController(authProducer producer) {
+		super();
+		this.producer = producer;
+	}
+	
+	@PostMapping("/auth")
+	//@RequestBody => use to convert json into java object
+	public String placeOrder(@RequestBody AuthRequest auth)
+	{
+		
+		event evt= new event();
+		
+		evt.setMessage("Login Producer");
+		evt.setAuthRequest(auth);
+		
+		producer.sendMessage(evt);
+		return "Login done successfully";
+		
+	}
+
+}

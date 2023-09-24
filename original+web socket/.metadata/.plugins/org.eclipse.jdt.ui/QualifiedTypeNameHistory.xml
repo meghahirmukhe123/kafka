@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer"/>
+    <fullyQualifiedTypeName name="org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
+    <fullyQualifiedTypeName name="org.springframework.web.socket.config.annotation.StompEndpointRegistry"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+    <fullyQualifiedTypeName name="org.springframework.messaging.handler.annotation.MessageMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.messaging.handler.annotation.SendTo"/>
+    <fullyQualifiedTypeName name="org.springframework.messaging.handler.annotation.Payload"/>
+    <fullyQualifiedTypeName name="org.springframework.messaging.simp.SimpMessagingTemplate"/>
+    <fullyQualifiedTypeName name="org.springframework.web.socket.server.support.OriginHandshakeInterceptor"/>
+    <fullyQualifiedTypeName name="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+    <fullyQualifiedTypeName name="org.springframework.web.socket.config.annotation.WebSocketConfigurer"/>
+    <fullyQualifiedTypeName name="org.springframework.web.socket.config.annotation.EnableWebSocket"/>
+    <fullyQualifiedTypeName name="org.springframework.web.socket.server.support.DefaultHandshakeHandler"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
+    <fullyQualifiedTypeName name="org.springframework.web.filter.CorsFilter"/>
+    <fullyQualifiedTypeName name="org.springframework.messaging.simp.config.MessageBrokerRegistry"/>
+</qualifiedTypeNameHistroy>

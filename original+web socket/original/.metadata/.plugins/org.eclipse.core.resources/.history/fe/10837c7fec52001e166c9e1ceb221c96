@@ -1,0 +1,125 @@
+package com.ProductDetails.controller;
+
+import java.util.List;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ProductDetails.kafka.productDetailsProducer;
+import com.ProductDetails.model.ProductDetails;
+import com.ProductDetails.service.ProductServices;
+
+@RestController
+@CrossOrigin(origins = "http://localhost:4200")
+public class ProductDetailsController {
+
+	@Autowired
+	private ProductServices productServices;
+
+	@Autowired
+	private productDetailsProducer producer;
+
+	// save data
+	@PostMapping("/saveProductDetails")
+	public ResponseEntity<ProductDetails> saveData(@RequestBody ProductDetails productDetails) throws Exception {
+		// Calculate priceWithGST and totalBill
+		double priceWithGST = productDetails.getPrice() * (productDetails.getGst() / 100);
+		double totalBill = productDetails.getPrice() + priceWithGST;
+
+		// Set the calculated values in the ProductDetails object
+		productDetails.setPriceWithGST(priceWithGST);
+		productDetails.setTotalBillRs(totalBill + " Rs");
+
+		// Check if the email ID already exists in the database
+		String tempEmailId = productDetails.getEmailId();
+		if (tempEmailId != null && !"".equals(tempEmailId)) {
+			ProductDetails pro = productServices.fetchProductDetailsByEmailId(tempEmailId);
+			if (pro != null) {
+				throw new Exception("Email ID already exists in the database");
+			}
+		}
+
+		// Now, you can save the modified productDetails object
+		return ResponseEntity.ok().body(productServices.saveProductData(productDetails));
+	}
+
+	// get all
+	@GetMapping("/getallproducts")
+	public ResponseEntity<List<ProductDetails>> getall() {
+		return ResponseEntity.ok().body(productServices.getAllProduct());
+	}
+
+	// get by product id
+	@GetMapping("/getbyproductid/{productId}")
+	public ResponseEntity<Optional<ProductDetails>> getByproductId(@PathVariable String productId) {
+		return ResponseEntity.ok().body(productServices.getByProductId(productId));
+
+	}
+
+	// get by email id
+	@GetMapping("/getproductbyemailid/{emailId}")
+	public ResponseEntity<ProductDetails> getByUserId(@PathVariable String emailId) {
+		return ResponseEntity.ok().body(productServices.fetchProductDetailsByEmailId(emailId));
+	}
+
+	// delete by email id
+	@DeleteMapping("/deleteProductdetails/{emailId}")
+	public String deleteByEmailId(@PathVariable String emailId) {
+		productServices.deleteByEmailID(emailId);
+		return "Product details deleted successfully";
+	}
+
+	// update by emailid
+//	@PutMapping("/updatebyemailid/{emailId}")
+//	public ResponseEntity<ProductDetails> updateByEmailId(@PathVariable String emailId,
+//			@RequestBody ProductDetails updatedProductDetails) {
+//		ProductDetails updatedProduct = productServices.updateProductDataByEmailId(emailId, updatedProductDetails);
+//
+//		if (updatedProduct != null) {
+//			return ResponseEntity.ok().body(updatedProduct);
+//		} else {
+//			return ResponseEntity.notFound().build();
+//		}
+//	}
+	
+	
+	// Update by emailid
+	@PutMapping("/updatebyemailid/{emailId}")
+	public ResponseEntity<ProductDetails> updateByEmailId(@PathVariable String emailId,
+	        @RequestBody ProductDetails updatedProductDetails) {
+	    ProductDetails existingProduct = productServices.fetchProductDetailsByEmailId(emailId);
+
+	    if (existingProduct != null) {
+	        // Update the fields of existingProduct with the fields from updatedProductDetails
+	        existingProduct.setEmailId(updatedProductDetails.getEmailId());
+	        existingProduct.setProductName(updatedProductDetails.getProductName());
+	        existingProduct.setPrice(updatedProductDetails.getPrice());
+	        existingProduct.setDate(updatedProductDetails.getDate());
+	        existingProduct.setGst(updatedProductDetails.getGst()); // Update GST field
+
+	        // Calculate priceWithGST and totalBill
+	        double priceWithGST = existingProduct.getPrice() * (existingProduct.getGst() / 100);
+	        double totalBill = existingProduct.getPrice() + priceWithGST;
+	        existingProduct.setPriceWithGST(priceWithGST);
+	        existingProduct.setTotalBillRs(totalBill + " Rs");
+
+	        // Save the updated product details
+	        ProductDetails updatedProduct = productServices.saveProductData(existingProduct);
+
+	        return ResponseEntity.ok().body(updatedProduct);
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
+	}
+
+}

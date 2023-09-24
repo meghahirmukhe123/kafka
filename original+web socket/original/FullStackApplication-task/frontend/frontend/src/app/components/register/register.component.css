@@ -1,0 +1,55 @@
+.full-width {
+    width: 280%;
+    margin-left: 110%;
+
+}
+
+
+
+/* .body {
+    background-image: url('https://e0.pxfuel.com/wallpapers/1000/464/desktop-wallpaper-login-page-larry-page-homepage-nexus-and-bing-homepage.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+   
+    background-size: 10; 
+    background-position: center;
+    margin-left: 20;
+    margin-right: 0;
+    margin-top: 40%;
+    padding: 0;  
+    height: 100vh;
+    width: 100vw;
+    
+} */
+
+
+
+mat-form-field,
+button {
+    margin-right: 10px;
+    margin-bottom: 0px;
+}
+
+.outer-image {
+    background-image: url('https://img.freepik.com/free-vector/ripped-notes-rectangle-frame-background_53876-99423.jpg?w=2000');
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100;
+    margin-left: 0%;
+    margin-right: 0%;
+    padding: 0%;
+    width: 100%;
+    filter: blur(8px);
+    /* Apply the blur effect */
+    z-index: -6;
+    /* Place the element behind the content */
+    content: "";
+}
+
+.content-container {
+    position: relative;
+    z-index: 1;
+  }

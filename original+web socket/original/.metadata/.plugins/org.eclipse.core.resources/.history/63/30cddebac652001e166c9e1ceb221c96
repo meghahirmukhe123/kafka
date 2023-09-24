@@ -1,0 +1,5 @@
+package com.ProductDetails.kafka;
+
+public class productDetailsProducer {
+
+}

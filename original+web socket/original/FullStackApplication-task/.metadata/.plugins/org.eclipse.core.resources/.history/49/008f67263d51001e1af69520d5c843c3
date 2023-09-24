@@ -1,0 +1,8 @@
+package com.UserDetails.consumer;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class userDetailsConsumer {
+
+}

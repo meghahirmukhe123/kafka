@@ -1,0 +1,50 @@
+package com.ProductDetails.kafka;
+
+import org.springframework.stereotype.Service;
+
+
+
+
+import org.apache.kafka.clients.admin.NewTopic;
+
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.KafkaHeaders;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.support.MessageBuilder;
+
+
+@Service
+public class productDetailsProducer {
+	
+	@Autowired
+	private NewTopic topic;
+	
+	private KafkaTemplate<String, userbill> kafkaTemplate;
+	
+	private final Logger logger= LoggerFactory.getLogger(productDetailsProducer.class);
+	
+	public productDetailsProducer(NewTopic topic ,KafkaTemplate<String, userbill> kafkaTemplate)
+	{
+		this.topic=topic;
+		this.kafkaTemplate=kafkaTemplate;
+	}
+	
+	public void sendMessage(userBill uBill)
+	{
+		logger.info(String.format("event => %s",uBill.toString()));
+		
+		//create msg
+		//will send this mesage to kafka topic
+		Message<userBill> message= MessageBuilder
+				.withPayload(uBill)
+				.setHeader(KafkaHeaders.TOPIC, topic.name())  //key,value  => topic,topicName
+				.build();
+		
+		kafkaTemplate.send(message);
+	}
+
+}

@@ -1,0 +1,46 @@
+body{
+    flex: 0 auto;
+}
+
+
+
+
+  .img-row {
+    margin-top: 10%;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .img-row a {
+    display: inline-block;
+    margin: 0 40px; /* Adjust margin as needed */
+  }
+  
+  .img-row img {
+    width: 159px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+  }
+  .image {
+    background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20210222/pngtree-background-business-light-effect-gray-image_564159.jpg');
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100;
+    margin-left: 0%;
+    margin-right: 0%;
+    padding: 0%;
+    width: 100%;
+    filter: blur(0px);
+    /* Apply the blur effect */
+    z-index: -6;
+    /* Place the element behind the content */
+    content: "";
+}
+  
+  
+
+  

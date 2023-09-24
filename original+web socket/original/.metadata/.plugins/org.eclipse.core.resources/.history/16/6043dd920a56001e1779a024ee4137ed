@@ -1,0 +1,22 @@
+package com.Bill.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class kafkaController {
+
+	private final BillConsumer billConsumer;
+
+    @Autowired
+    public KafkaController(BillConsumer billConsumer) {
+        this.billConsumer = billConsumer;
+    }
+
+    // Endpoint to fetch Kafka message
+    @GetMapping("/getKafkaMessage")
+    public String getKafkaMessage() {
+        // Retrieve the Kafka message from your Kafka consumer service
+        String kafkaMessage = billConsumer.getLatestKafkaMessage(); // Implement this method in your consumer service
+        return kafkaMessage;
+    }
+}

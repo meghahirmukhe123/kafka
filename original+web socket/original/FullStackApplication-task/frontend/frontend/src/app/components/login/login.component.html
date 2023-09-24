@@ -1,0 +1,57 @@
+
+<div class="container body">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2 class="text-center" style="font-family:Georgia, 'Times New Roman', Times, serif;"> Login here!!</h2>
+    <div class="container">
+    <form (submit)="loginUser()" style="width:auto;">
+        <small class="text-danger">{{msg}}</small>
+
+      <div class="form-group full-width">
+        <label for="name"  style="font-family:Georgia, 'Times New Roman', Times, serif;" >Username:</label>
+        <input type="text" class="form-control"  placeholder="Enter username" name="name" [(ngModel)]="user.name" required #name="ngModel"
+        [class.isInvalid]="name.invalid && name.touched">
+        
+        
+        <div>
+          <!-- <small class="text-danger">Name is required</small> -->
+          <small class="text-danger" [class.d-none]="name.valid || name.untouched">username is required</small>
+          
+        </div>
+      </div>
+      <br>
+
+      <div class="form-group full-width">
+        <label for="pwd"  style="font-family:Georgia, 'Times New Roman', Times, serif;">Password:</label>
+        <input type="password" class="form-control"  placeholder="Enter password" name="pwd" [(ngModel)]="user.password"  #password="ngModel" required
+        [class.isInvalid]="password.invalid && password.touched"
+        >
+        <small class="text-danger" [class.d-none]="password.valid || password.untouched">password is required</small>
+      </div>
+
+      <br>
+
+      <div class="text-center">
+      <button type="submit" class="btn btn-info" >Login</button>
+      </div>
+    </form>
+  </div>
+    <br>
+
+    <div class="text-center">
+    <h6 [routerLink]="['/register']"> New user? <b><u>Register here</u></b></h6>
+   </div>
+
+   <div class="text-center">
+    <h6 [routerLink]="['']"><b><u>Back to home page</u></b></h6>
+   </div>
+  
+
+
+
+
+

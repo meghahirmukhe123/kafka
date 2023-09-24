@@ -1,0 +1,8 @@
+package com.PersonalDetails.config;
+
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class kafkaConsumerConfig {
+
+}

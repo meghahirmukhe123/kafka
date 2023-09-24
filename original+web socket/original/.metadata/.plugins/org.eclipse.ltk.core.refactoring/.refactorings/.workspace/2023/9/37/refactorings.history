@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 9 resources" deleteContents="false" description="Delete 9 resources" element1="/eurekaServer" element2="/Bill" element3="/backend" element4="/UserDetails" element5="/PersonalDetails" element6="/APIGATEWAY" element7="/IdentityService" element8="/UserDetails_UserDetails" element9="/ProductDetails" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="9" stamp="1694603387957"/>
+</session>

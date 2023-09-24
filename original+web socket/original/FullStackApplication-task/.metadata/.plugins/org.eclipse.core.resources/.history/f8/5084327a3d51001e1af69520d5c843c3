@@ -1,0 +1,5 @@
+package com.UserDetails.config;
+
+public class KafkaConsumerConfig {
+
+}

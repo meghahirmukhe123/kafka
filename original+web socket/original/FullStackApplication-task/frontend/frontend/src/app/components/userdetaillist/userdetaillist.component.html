@@ -1,0 +1,87 @@
+<div class="body">
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="title-style">User-Details List</h2>
+        </div>
+        <div class="col-md-6">
+            <a routerLink="/userdetailshome" class="btn btn-secondary" style="margin-left: 519px;">Go Back</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <input type="text" [(ngModel)]="searchEmail" placeholder="Search by Email ID">
+            <button (click)="searchUser()" class="shift-button">Search</button>
+            <button (click)="clearSearch()" class="shift-button">Clear Search</button>
+        </div>
+    </div>
+
+    <br>
+
+    <br>
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th>User-Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email-Id</th>
+                <th>City</th>
+                <th>PinCode</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngIf="displayedUser; else userList">
+                <tr>
+                    <td>{{ displayedUser.userId }}</td>
+                    <td>{{ displayedUser.firstName }}</td>
+                    <td>{{ displayedUser.lastName }}</td>
+                    <td>{{ displayedUser.emailId }}</td>
+                    <td>{{ displayedUser.city }}</td>
+                    <td>{{ displayedUser.pinCode }}</td>
+                    <td>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <button (click)="updatebyEmailId(displayedUser.emailId)" class="btn btn-info"
+                                    style="margin-right: 5px;">Update</button>
+                            </div>
+                            <div class="col-md-4">
+                                <button (click)="deletebyEmailId(displayedUser.emailId)" class="btn btn-danger"
+                                    style="margin-right: 5px;">Delete</button>
+                            </div>
+                            <div class="col-md-4">
+                                <button [routerLink]="'/getuserbill/' + displayedUser.emailId" class="btn btn-success">Get Bill</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </ng-container>
+            <ng-template #userList>
+                <tr *ngFor="let userd of userdetails">
+                    <td>{{ userd.userId }}</td>
+                    <td>{{ userd.firstName }}</td>
+                    <td>{{ userd.lastName }}</td>
+                    <td>{{ userd.emailId }}</td>
+                    <td>{{ userd.city }}</td>
+                    <td>{{ userd.pinCode }}</td>
+                    <td>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <button (click)="updatebyEmailId(userd.emailId)" class="btn btn-info" style="margin-right: -62px;">Update</button>
+                            </div>
+                            <div class="col-md-4">
+                                <button (click)="deletebyEmailId(userd.emailId)" class="btn btn-danger" style="margin-right: -22px;">Delete</button>
+                            </div>
+                            <div class="col-md-4">
+                                <button [routerLink]="'/getuserbill/' + userd.emailId" class="btn btn-success">Get Bill</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </tbody>
+    </table>
+</div>

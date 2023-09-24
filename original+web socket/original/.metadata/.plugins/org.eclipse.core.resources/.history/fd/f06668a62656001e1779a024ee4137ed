@@ -1,0 +1,5 @@
+package com.ProductDetails.repo;
+
+public interface UserBillRepository extends MongoRepository<userBill,String>{
+
+}

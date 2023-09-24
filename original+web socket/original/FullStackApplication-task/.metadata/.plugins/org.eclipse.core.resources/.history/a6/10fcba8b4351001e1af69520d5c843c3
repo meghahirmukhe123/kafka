@@ -1,0 +1,16 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.startPoint</groupId>
+  <artifactId>startPoint</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>EurekaServer</module>
+  	<module>AuthService</module>
+  	<module>ApiGateway</module>
+  	<module>UserDetails</module>
+  	<module>PersonalDetails</module>
+  	<module>ProductDetails</module>
+  	<module>userdetails</module>
+  </modules>
+</project>

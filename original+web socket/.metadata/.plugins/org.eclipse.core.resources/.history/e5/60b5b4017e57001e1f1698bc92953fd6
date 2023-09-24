@@ -1,0 +1,13 @@
+package com.Bill.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class WebSocketController {
+	@MessageMapping("/sendUpdate")
+    @SendTo("/topic/update")
+    public String sendUpdate(String message) {
+        return message;
+    }
+
+}

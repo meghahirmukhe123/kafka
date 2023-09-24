@@ -1,0 +1,17 @@
+package com.Bill.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class WebSocketController {
+
+	 @Autowired
+	    private SimpMessagingTemplate messagingTemplate;
+
+	    @KafkaListener(topics = "${spring.kafka.topic.name}")
+	    public void sendKafkaMessageToWebSocket(UserBill userBill) {
+	        messagingTemplate.convertAndSend("/topic/kafkaMessage", userBill);
+	    }
+}

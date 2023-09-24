@@ -1,0 +1,148 @@
+package com.ProductDetails.serviceImpl;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ProductDetails.model.ProductDetails;
+import com.ProductDetails.repo.ProductRepo;
+import com.ProductDetails.service.ProductServices;
+
+@Service
+public class ProductDetailsServiceImpl implements ProductServices{
+	
+	@Autowired
+	private ProductRepo productRepo;
+
+	@Override
+	public ProductDetails saveProductData(ProductDetails productDetails) {
+		// TODO Auto-generated method stub
+		return productRepo.save(productDetails);
+	}
+
+	@Override
+	public List<ProductDetails> getAllProduct() {
+		// TODO Auto-generated method stub
+		return productRepo.findAll();
+	}
+
+	@Override
+	public Optional<ProductDetails> getByProductId(String productId) {
+		// TODO Auto-generated method stub
+		return productRepo.findById(productId);
+	}
+
+	
+
+	@Override
+	public String deleteByEmailID(String emailId) {
+		// TODO Auto-generated method stub
+		productRepo.deleteByemailId(emailId);
+		return "deleted succeessfully";
+	}
+
+
+
+//	@Override
+//	public ProductDetails fetchProductDetailsByEmailId(String emailId) {
+//		
+//		return productRepo.findByemailId(emailId);
+//	}
+	
+	
+
+
+
+	
+	
+//	@Override
+//	public ProductDetails updateProductDataByEmailId(String emailId, ProductDetails updatedProductDetails) {
+//	    ProductDetails existingProduct = (ProductDetails) productRepo.findByemailId(emailId);
+//	    
+//	    if (existingProduct != null) {
+//	        // Update the fields of existingProduct with the fields from updatedProductDetails
+//	        existingProduct.setEmailId(updatedProductDetails.getEmailId());
+//	        existingProduct.setProductName(updatedProductDetails.getProductName());
+//	        existingProduct.setPrice(updatedProductDetails.getPrice());
+//	        existingProduct.setDate(updatedProductDetails.getDate());
+//	        
+//	        // Save the updated product details
+//	        return productRepo.save(existingProduct);
+//	    }
+//	    return null; // Return null if the product with the given emailId is not found
+//	}
+	
+
+//	@Override
+//	public List<ProductDetails> updateProductDataByEmailId(String emailId, ProductDetails updatedProductDetails) {
+//	    List<ProductDetails> existingProducts = productRepo.findByemailId(emailId);
+//
+//	    if (existingProducts != null && !existingProducts.isEmpty()) {
+//	        for (ProductDetails existingProduct : existingProducts) {
+//	            // Update the fields of existingProduct with the fields from updatedProductDetails
+//	            existingProduct.setEmailId(updatedProductDetails.getEmailId());
+//	            existingProduct.setProductName(updatedProductDetails.getProductName());
+//	            existingProduct.setPrice(updatedProductDetails.getPrice());
+//	            existingProduct.setDate(updatedProductDetails.getDate());
+//	            existingProduct.setGst(updatedProductDetails.getGst()); // Update GST field
+//
+//	            // Calculate priceWithGST and totalBill
+//	            double priceWithGST = existingProduct.getPrice() * (existingProduct.getGst() / 100);
+//	            double totalBill = existingProduct.getPrice() + priceWithGST;
+//	            existingProduct.setPriceWithGST(priceWithGST);
+//	            existingProduct.setTotalBillRs(totalBill + " Rs");
+//
+//	            // Save the updated product details
+//	            productRepo.save(existingProduct);
+//	        }
+//
+//	        return existingProducts;
+//	    }
+//	    return null; // Return null if no products with the given emailId are found
+//	}
+	
+	@Override
+    public ProductDetails updateProductDataByEmailId(String emailId, ProductDetails updatedProductDetails) {
+        ProductDetails existingProduct = productRepo.findByEmailIdAndProductId(emailId);
+
+        if (existingProduct != null) {
+            existingProduct.setProductName(updatedProductDetails.getProductName());
+            existingProduct.setPrice(updatedProductDetails.getPrice());
+            existingProduct.setDate(updatedProductDetails.getDate());
+            existingProduct.setGst(updatedProductDetails.getGst());
+
+            double priceWithGST = existingProduct.getPrice() * (existingProduct.getGst() / 100);
+            double totalBill = existingProduct.getPrice() + priceWithGST;
+            existingProduct.setPriceWithGST(priceWithGST);
+            existingProduct.setTotalBillRs(totalBill + " Rs");
+
+            return productRepo.save(existingProduct);
+        }
+        return null;
+    }
+	
+	
+
+
+@Override
+public List<ProductDetails> fetchProductDetailsByEmailId(String emailId) {
+	// TODO Auto-generated method stub
+	return productRepo.findByemailId(emailId);
+}
+
+@Override
+public List<ProductDetails> fetchProductDetailsByEmailId(String emailId) {
+	
+	return productRepo.findByProductIdAndEmailId(emailId);
+}
+
+
+
+
+	
+
+
+
+}

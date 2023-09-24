@@ -1,0 +1,77 @@
+<div class="outer-image">
+</div>
+    <div class="content-container">
+    <div class=" bootstrap-wrapper " >
+    <div class="container margin-top">
+        <div class="row">
+            <div class="container">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <img class="img-fluid" style="width: 127px;margin-left: 45%;"
+                    src="https://www.clipartmax.com/png/middle/377-3771261_image-result-for-sign-up-below-image-result-for-sign-up-below.png">
+
+            </div>
+
+
+
+            <!-- created form -->
+            <form (ngSubmit)="registerUser()" style="width:auto;" #loginform="ngForm">
+                <small style="margin-left: 114%; color:black">{{loginform.form.valid}}</small>
+                <br>
+                <mat-form-field class="full-width">
+
+                    <mat-label> First-Name</mat-label>
+                    <input [(ngModel)]="user.name" name="name" required type="text" matInput [(ngModel)]="user.name"
+                        required #name="ngModel" [class.isInvalid]="name.invalid && name.touched">
+                    <small class="text-danger" [class.d-none]="name.valid || name.untouched">First-Name is
+                        required</small>
+
+                </mat-form-field>
+                <br>
+
+
+                <mat-form-field class="full-width">
+                    <mat-label>Email-Id</mat-label>
+                    <input [(ngModel)]="user.email" name="email" required type="email" matInput required
+                        #emailid="ngModel" [class.isInvalid]="emailid.invalid && emailid.touched"
+                        pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$">
+                    <div *ngIf="emailid.errors && (emailid.invalid && emailid.touched)">
+                        <small class="text-danger" *ngIf="emailid.errors">Email is required.  </small>
+                        <small class="text-danger" *ngIf="emailid.errors['pattern']">Enter valid email</small>
+                    </div>
+                </mat-form-field>
+                <br>
+
+                <mat-form-field class="full-width">
+                    <mat-label>Password</mat-label>
+                    <input [(ngModel)]="user.password" name="password" required type="password" matInput
+                        [(ngModel)]="user.password" #password="ngModel" required
+                        [class.isInvalid]="password.invalid && password.touched">
+                    <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is
+                        required</small>
+
+                </mat-form-field>
+                <br>
+
+
+                <!-- creating button -->
+
+
+                <button type="submit" class="btn btn-info" style="margin-left: 237%;"
+                    [disabled]="loginform.form.invalid">Register</button>
+
+
+
+            </form>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    

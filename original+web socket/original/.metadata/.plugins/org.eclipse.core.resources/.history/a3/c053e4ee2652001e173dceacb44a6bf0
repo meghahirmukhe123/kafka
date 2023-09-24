@@ -1,0 +1,8 @@
+package com.IdentityService.kafka;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class authProducer {
+
+}

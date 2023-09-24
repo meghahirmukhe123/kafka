@@ -1,0 +1,8 @@
+package com.IdentityService.dto;
+
+import lombok.Data;
+
+@Data
+public class event {
+
+}

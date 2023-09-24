@@ -1,0 +1,7 @@
+package com.ProductDetails.config;
+
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+public class CorsConfig implements WebMvcConfigurer {
+
+}

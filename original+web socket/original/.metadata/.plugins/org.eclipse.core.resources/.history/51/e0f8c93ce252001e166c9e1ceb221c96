@@ -1,0 +1,8 @@
+package com.Bill.kafka;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class billConsumer {
+
+}
