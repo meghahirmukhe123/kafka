@@ -1,0 +1,6 @@
+package com.IdentityService.kafka;
+
+
+public class authProducer {
+
+}

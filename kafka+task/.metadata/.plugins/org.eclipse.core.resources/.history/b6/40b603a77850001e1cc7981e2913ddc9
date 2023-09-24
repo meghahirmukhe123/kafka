@@ -1,0 +1,5 @@
+package com.UserDetails.kafka;
+
+public class userDetailsConsumer {
+
+}

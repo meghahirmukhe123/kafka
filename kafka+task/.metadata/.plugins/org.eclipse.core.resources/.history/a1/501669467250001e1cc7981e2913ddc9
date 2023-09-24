@@ -1,0 +1,15 @@
+package com.IdentityService.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class KafkaTopicConfig {
+	
+	
+	@Bean
+    public NewTopic topic(@Value("${spring.kafka.topic.name}") String topicName) {
+        return TopicBuilder.name(topicName).build();
+    }
+
+}

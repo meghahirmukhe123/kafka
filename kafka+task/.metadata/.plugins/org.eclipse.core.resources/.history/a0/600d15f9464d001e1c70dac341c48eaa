@@ -1,0 +1,14 @@
+package com.IdentityService.kafka;
+
+import org.apache.kafka.clients.admin.NewTopic;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class eventProducer {
+	
+	@Autowired
+	private NewTopic topic;
+	
+
+}

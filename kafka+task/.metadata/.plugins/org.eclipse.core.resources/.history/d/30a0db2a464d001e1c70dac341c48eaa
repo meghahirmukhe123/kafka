@@ -1,0 +1,6 @@
+package com.IdentityService.config;
+
+
+public class KafkaTopicConfig {
+
+}

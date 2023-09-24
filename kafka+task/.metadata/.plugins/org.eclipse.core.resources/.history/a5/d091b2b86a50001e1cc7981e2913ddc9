@@ -1,0 +1,5 @@
+
+
+spring.kafka.consumer.properties.spring.json.trusted.packages=*  //spring kafka will trust all packages
+spring.kafka.topic.name=kafka
+

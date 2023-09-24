@@ -1,0 +1,21 @@
+package com.IdentityService.kafka;
+
+import org.apache.kafka.clients.admin.NewTopic;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
+
+import com.IdentityService.dto.event;
+
+@Service
+public class eventProducer {
+	
+	@Autowired
+	private NewTopic topic;
+	
+	//using kafka template to send event or msg to kafka topic
+    private KafkaTemplate< String, event> kafkaTemplate;
+	
+	
+
+}

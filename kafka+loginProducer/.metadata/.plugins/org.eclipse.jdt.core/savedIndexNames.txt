@@ -1,0 +1,2 @@
+INDEX VERSION 1.132+C:\Users\NTS-Megha Hirmukhe\Desktop\kafka\kafka+loginProducer\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index

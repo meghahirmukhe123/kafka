@@ -1,0 +1,24 @@
+package com.ProductDetails.kafka;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
+
+import com.IdentityService.dto.event;
+
+@Service
+public class eventConsumer { 
+
+private static final Logger logger= LoggerFactory.getLogger(eventConsumer.class);
+	
+	
+	//following method is to subscribe kafka topic
+	@KafkaListener(topics = "${spring.kafka.topic.name}", groupId = "${spring.kafka.consumer.group-id}")
+	public void consume(event ev)
+	{
+		logger.info(String.format(" event received in product service => %s", ev.toString()));
+		
+		
+	}
+}

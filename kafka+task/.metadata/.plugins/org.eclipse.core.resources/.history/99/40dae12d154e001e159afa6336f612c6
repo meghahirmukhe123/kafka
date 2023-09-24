@@ -1,0 +1,57 @@
+#server:
+#  port: 1003
+#spring:
+#  main:
+#    banner-mode: off
+#  application:
+#    name: PRODUCTDETAILS-SERVICE
+#    
+##database configuration
+#  data:
+#    mongodb:
+#      database: MyApplication
+#      host: localhost
+#  kafka:
+#    consumer:
+#      bootstrap-servers:
+#      - localhost:9092
+#      group-id: product
+#      auto-offset-reset: earliest
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      
+#        
+#        
+#
+##eureka configuration
+#eureka:
+#  client:
+#    service-url:
+#      defaultzone : http://localhost:8761/eureka
+#      
+
+server:
+  port: 1003
+
+spring:
+  main:
+    banner-mode: off
+  application:
+    name: PRODUCTDETAILS-SERVICE
+
+# Kafka configuration
+kafka:
+  consumer:
+    bootstrap-servers:
+      - localhost:9092
+    group-id: product
+    auto-offset-reset: earliest
+    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+# Eureka configuration
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+

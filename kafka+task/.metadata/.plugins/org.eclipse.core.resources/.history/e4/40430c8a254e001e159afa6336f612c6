@@ -1,0 +1,5 @@
+package com.PersonalDetails.kafka;
+
+public class eventConsumer {
+
+}

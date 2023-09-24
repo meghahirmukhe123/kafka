@@ -1,0 +1,46 @@
+package com.IdentityService.kafka;
+
+import org.apache.kafka.clients.admin.NewTopic;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.kafka.support.KafkaHeaders;
+
+import com.IdentityService.dto.event;
+
+@Service
+public class authProducer {
+	
+	@Autowired
+	private NewTopic topic;
+	
+	private KafkaTemplate<String, event> kafkaTemplate;
+	
+	private final Logger logger= LoggerFactory.getLogger(authProducer.class);
+	
+	public authProducer(NewTopic topic ,KafkaTemplate<String, event> kafkaTemplate)
+	{
+		this.topic=topic;
+		this.kafkaTemplate=kafkaTemplate;
+	}
+	
+	public void sendMessage(event ev)
+	{
+		logger.info(String.format("Order event => %s",ev.toString()));
+		
+		//create msg
+		//will send this mesage to kafka topic
+		Message<event> message= MessageBuilder
+				.withPayload(ev)
+				.setHeader(KafkaHeaders.TOPIC, topic.name())  //key,value  => topic,topicName
+				.build();
+		
+		kafkaTemplate.send(message);
+	}
+
+}

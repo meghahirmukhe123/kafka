@@ -1,0 +1,18 @@
+package com.IdentityService.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+import com.IdentityService.kafka.authProducer;
+
+@RestController
+public class eventController {
+	private authProducer producer;
+	
+	public eventController(authProducer producer) {
+		super();
+		this.producer = producer;
+	}
+	
+	
+
+}

@@ -1,0 +1,8 @@
+package com.IdentityService.config;
+
+import org.springframework.context.annotation.Configuration;
+
+@Configurationi
+public class KafkaTopicConfig {
+
+}

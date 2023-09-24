@@ -1,0 +1,34 @@
+package com.UserDetails.kafka;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
+import org.springframework.kafka.support.serializer.ErrorHandlingDeserializer;
+
+import com.IdentityService.dto.event;
+
+@Service
+public class userDetailsConsumer {
+	
+private static final Logger logger= LoggerFactory.getLogger(userDetailsConsumer.class);
+	
+	
+	//following method is to subscribe kafka topic
+//	@KafkaListener(topics = "${spring.kafka.topic.name}", groupId = "${spring.kafka.consumer.group-id}")
+//	public void consume(event ev)
+
+
+@KafkaListener(
+    topics = "${spring.kafka.topic.name}",
+    groupId = "${spring.kafka.consumer.group-id}",
+    valueDeserializer = ErrorHandlingDeserializer.class // Use ErrorHandlingDeserializer
+
+	{
+		logger.info(String.format("Order event received in stock service => %s", ev.toString()));
+		
+		
+	}
+
+
+}

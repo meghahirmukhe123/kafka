@@ -1,0 +1,20 @@
+package com.ProductDetails.kafka;
+
+import org.slf4j.Logger;
+import org.springframework.stereotype.Service;
+
+@Service
+public class eventConsumer { 
+
+private static final Logger logger= LoggerFactory.getLogger(OrderConsumer.class);
+	
+	
+	//following method is to subscribe kafka topic
+	@KafkaListener(topics = "${spring.kafka.topic.name}", groupId = "${spring.kafka.consumer.group-id}")
+	public void consume(OrderEvent event)
+	{
+		logger.info(String.format("Order event received in stock service => %s", event.toString()));
+		
+		
+	}
+}

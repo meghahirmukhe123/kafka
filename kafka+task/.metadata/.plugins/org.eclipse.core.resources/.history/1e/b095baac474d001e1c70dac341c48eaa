@@ -1,0 +1,45 @@
+package com.IdentityService.kafka;
+
+
+import org.apache.kafka.clients.admin.NewTopic;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
+
+import com.IdentityService.dto.event;
+
+@Service
+public class eventProducer {
+	
+	@Autowired
+	private NewTopic topic;
+	
+	//using kafka template to send event or msg to kafka topic
+    private KafkaTemplate< String, event> kafkaTemplate;
+    
+    
+	private static final Logger logger = LoggerFactory.getLogger(eventProducer.class);
+	
+	
+	public eventProducer(NewTopic topic , KafkaTemplate<String, event> kafkaTemplate)
+	{
+		this.topic=topic;
+		this.kafkaTemplate= kafkaTemplate;
+	}
+	
+	
+	public void sendMesage(event e)
+	{
+		logger.info(String.format("Event => %s", e.toString()));
+		
+		//create msg
+		//will send this msg to kafka topic
+		org.springframework.messaging.Message<T>
+	}
+
+	
+	
+
+}
